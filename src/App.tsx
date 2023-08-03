@@ -93,7 +93,7 @@ function App() {
     };
     return (
         <div className="h-screen w-full flex flex-col items-center bg-zinc-900 relative text-white text-center font-iranyekan">
-            <div className="pt-4 w-[350px] flex flex-col overflow-y-scroll pb-24 gap-4 md:w-[500px] lg:w-[900px]">
+            <div className="pt-4 w-[350px] flex flex-col overflow-y-scroll pb-40 gap-4 md:pb-24 md:w-[500px] lg:w-[900px]">
                 {messages &&
                     messages.map((msg, idx) => {
                         if (msg.type === "message") {
@@ -189,10 +189,13 @@ function App() {
                         }}
                         disabled={inputState}
                     />
-                    <BiSolidSend
+                    <button
                         onClick={submitMessage}
-                        className="absolute left-[8%] bottom-3 rotate-180 md:left-[7%] lg:left-[6%]"
-                    />
+                        disabled={inputState}
+                        className="absolute left-[8%] bottom-2 md:left-[7%] lg:left-[6%]  hover:bg-green-500 rounded-sm p-1 transition-all duration-300 cursor-pointer"
+                    >
+                        <BiSolidSend className=" rotate-180 " />
+                    </button>
                 </div>
                 <p className="mt-2 text-zinc-500">
                     قدرت گرفته از <span className="text-green-500">ایگپ</span>
