@@ -3,6 +3,7 @@ import axios from "axios";
 import { Input } from "@/components/ui/input";
 import MessageBox from "./components/MessageBox";
 import VoiceBox from "./components/VoiceBox";
+import { Toaster, toast } from "react-hot-toast";
 import {
     BiSolidSend,
     BiUserVoice,
@@ -31,6 +32,15 @@ function App() {
     const [textMessage, setTextMessage] = useState<string>("");
     const [inputState, setInputState] = useState(false);
     const submitMessage = () => {
+        if (textMessage.length < 1)
+            return toast.error("متن بسیار کوتاه است.", {
+                icon: "🤏",
+                style: {
+                    background: "#222226",
+                    color: "#fff",
+                    direction: "rtl",
+                },
+            });
         const oldMessages = [...messages];
         setMessages((prevstate) => [
             ...prevstate,
@@ -201,6 +211,7 @@ function App() {
                     قدرت گرفته از <span className="text-green-500">ایگپ</span>
                 </p>
             </div>
+            <Toaster position="top-center" reverseOrder={false} />
         </div>
     );
 }
